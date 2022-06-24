@@ -166,7 +166,7 @@ Widget _buildProfileRow() {
               ),
               cursorColor: Colors.deepPurpleAccent,
             ),
-          )
+          ),
         ],
       ),
     ],
