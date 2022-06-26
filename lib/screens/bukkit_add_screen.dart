@@ -23,16 +23,12 @@ class bukkitAddScreen extends StatelessWidget {
         children: [
           const SizedBox(height: 1),
           _buildProfileRow(),
-          // TextField(
-          //   decoration: InputDecoration(
-          //     labelText: 'Input',
-          //   ),
-          // ),
-          // _buildProfileButton(),
-          const SizedBox(height: 1),
-          _buildBukkitTextField(),
-          const SizedBox(height: 1),
-          buildBukiitAddButton(),
+          // const SizedBox(height: 1),
+          // _buildBukkitTextField(),
+          // const SizedBox(height: 1),
+          // buildBukiitAddButton(),
+          const SizedBox(height: 10),
+          ColumnInColumnTest(),
           const SizedBox(height: 1),
           SecretCheckToggleButton(),
         ],
@@ -51,14 +47,17 @@ Widget _buildBukkitTextField() {
             padding: const EdgeInsets.only(left: 17, top: 30),
             child: Container(
               // color: Colors.blue,
-              child: Icon(Icons.circle_rounded, size: 11,),
+              child: Icon(
+                Icons.circle_rounded,
+                size: 11,
+              ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 15, top: 30),
+            padding: const EdgeInsets.only(left: 12, top: 30),
             child: Container(
               // color: Colors.red,
-              width: 340,
+              width: 350,
               height: 27,
               child: TextField(
                 style: TextStyle(fontSize: 20),
@@ -67,7 +66,7 @@ Widget _buildBukkitTextField() {
                       borderSide: BorderSide(color: Colors.deepPurpleAccent)),
                   focusedBorder: UnderlineInputBorder(
                     borderSide:
-                    BorderSide(color: Colors.deepPurpleAccent, width: 2.5),
+                        BorderSide(color: Colors.deepPurpleAccent, width: 2.5),
                   ),
                 ),
                 cursorColor: Colors.deepPurpleAccent,
@@ -98,9 +97,8 @@ class _buildBukiitAddButtonState extends State<buildBukiitAddButton> {
           child: Container(
             child: IconButton(
               onPressed: () {
-                Stack(
-                );
-                print('테스트');
+                Stack();
+                print('리스트 추가생성 테스트');
               },
               icon: Icon(Icons.add_circle_outline),
               iconSize: 40,
@@ -113,29 +111,104 @@ class _buildBukiitAddButtonState extends State<buildBukiitAddButton> {
   }
 }
 
-// Widget _buildBukiitAddButton() {
-//   return Column(
+class ColumnInColumnTest extends StatefulWidget {
+  const ColumnInColumnTest({Key? key}) : super(key: key);
 
-//   );
-// }
+  @override
+  State<ColumnInColumnTest> createState() => _ColumnInColumnTestState();
+}
+
+class _ColumnInColumnTestState extends State<ColumnInColumnTest> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          // color: Colors.deepPurpleAccent,
+          width: 400,
+          height: 410,
+          child: ListView(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(),
+                child: Container(
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 14, top: 5),
+                        child: Container(
+                          child: Icon(
+                            Icons.circle_rounded,
+                            size: 11,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(left: 11, right: 13, top: 12),
+                        child: Container(
+                          child: Container(
+                            width: 340,
+                            height: 30,
+                            child: TextField(
+                              style: TextStyle(fontSize: 23),
+                              decoration: InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.deepPurpleAccent)),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Colors.deepPurpleAccent,
+                                      width: 2.5),
+                                ),
+                              ),
+                              cursorColor: Colors.deepPurpleAccent,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: Container(
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.add_circle_outline),
+                    // color: Colors.deepPurpleAccent,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
 
 // 버킷 사진 입력버튼 위젯
 Widget _buildProfileRow() {
   return Row(
     children: [
-      Container(
-        width: 100,
-        height: 100,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SizedBox(
-            width: 100,
-            height: 100,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(32.5),
-              child: Image.network(
-                'https://placeimg.com/200/100/people',
-                fit: BoxFit.cover,
+      Padding(
+        padding: const EdgeInsets.only(left: 6, top: 8),
+        child: Container(
+          width: 100,
+          height: 100,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              width: 100,
+              height: 100,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(32.5),
+                child: Image.network(
+                  'https://placeimg.com/200/100/people',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
@@ -143,28 +216,37 @@ Widget _buildProfileRow() {
       ),
       Column(
         children: [
-          Container(
-            width: 200,
-            height: 20,
-            child: Text(
-              '버킷리스트 제목 입력',
-              style: TextStyle(fontSize: 13),
+          Padding(
+            padding: const EdgeInsets.only(left: 8),
+            child: Container(
+              width: 200,
+              height: 20,
+              child: Text(
+                '버킷리스트 제목 입력',
+                style: TextStyle(fontSize: 13),
+              ),
             ),
           ),
-          Container(
-            width: 200,
-            height: 30,
-            child: TextField(
-              style: TextStyle(fontSize: 17),
-              decoration: InputDecoration(
-                enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.deepPurpleAccent)),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide:
-                  BorderSide(color: Colors.deepPurpleAccent, width: 2.5),
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Container(
+              width: 200,
+              height: 30,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 3),
+                child: TextField(
+                  style: TextStyle(fontSize: 20),
+                  decoration: InputDecoration(
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.deepPurpleAccent)),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                          color: Colors.deepPurpleAccent, width: 2.5),
+                    ),
+                  ),
+                  cursorColor: Colors.deepPurpleAccent,
                 ),
               ),
-              cursorColor: Colors.deepPurpleAccent,
             ),
           ),
         ],
@@ -173,40 +255,70 @@ Widget _buildProfileRow() {
   );
 }
 
+// 공개 여부 토글 위젯(하단 왼쪽 가장자리)
 class SecretCheckToggleButton extends StatefulWidget {
   const SecretCheckToggleButton({Key? key}) : super(key: key);
 
   @override
-  State<SecretCheckToggleButton> createState() => _SecretCheckToggleButtonState();
+  State<SecretCheckToggleButton> createState() =>
+      _SecretCheckToggleButtonState();
 }
 
 class _SecretCheckToggleButtonState extends State<SecretCheckToggleButton> {
-  List<bool> _selections1 = List.generate(2, (index) => false);
+  var _isSwitched = false;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          child: ToggleButtons(
-            children: <Widget>[
-              Icon(Icons.lock),
-              Icon(Icons.lock_open),
-              Text("WIFI"),
-            ],
-            onPressed: (int index) {
-              setState(() {
-                _selections1[index] = !_selections1[index];
-              });
-            },
-            isSelected: _selections1,
-          ),
+        Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 14),
+              child: Container(
+                child: Icon(Icons.security_sharp, size: 40,),
+              ),
+            ),
+            Container(
+              child: Column(
+                children: <Widget>[
+                  Switch(
+                    value: _isSwitched,
+                    onChanged: (value) {
+                      setState(() {
+                        _isSwitched = value;
+                      });
+                    },
+                    activeColor: Colors.deepPurpleAccent,
+
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 160, top: 10),
+              child: Container(
+                alignment: Alignment.bottomRight,
+                child: ElevatedButton.icon(
+                  // SAVE 버튼 눌렀을 떄 이벤트(DB에 저장)
+                  onPressed: () {},
+                  icon: Icon(Icons.add_task, size: 30),
+                  label: Text(
+                    'SAVE',
+                    style: TextStyle(fontSize: 22),
+                  ),
+                  style: TextButton.styleFrom(
+                      minimumSize: Size(100, 45),
+                      backgroundColor: Colors.deepPurpleAccent),
+                ),
+              ),
+            )
+          ],
         ),
       ],
     );
   }
 }
-
-
 
 Widget _buildProfileButton() {
   return InkWell(
