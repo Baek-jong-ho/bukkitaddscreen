@@ -52,7 +52,7 @@ class _ColumnInColumnTestState extends State<ColumnInColumnTest> {
       child: Column(
         children: [
           Container(
-            // color: Colors.deepPurpleAccent,
+            color: Colors.deepPurpleAccent,
             width: 400,
             height: 410,
             child: ListView(
