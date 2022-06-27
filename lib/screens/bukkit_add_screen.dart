@@ -37,80 +37,7 @@ class bukkitAddScreen extends StatelessWidget {
   }
 }
 
-// 서브 리스트 텍스트필드
-Widget _buildBukkitTextField() {
-  return Column(
-    children: [
-      Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 17, top: 30),
-            child: Container(
-              // color: Colors.blue,
-              child: Icon(
-                Icons.circle_rounded,
-                size: 11,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 12, top: 30),
-            child: Container(
-              // color: Colors.red,
-              width: 350,
-              height: 27,
-              child: TextField(
-                style: TextStyle(fontSize: 20),
-                decoration: InputDecoration(
-                  enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.deepPurpleAccent)),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.deepPurpleAccent, width: 2.5),
-                  ),
-                ),
-                cursorColor: Colors.deepPurpleAccent,
-              ),
-            ),
-          ),
-        ],
-      ),
-    ],
-  );
-}
-
-// 서브리스트 추가생성 버튼
-class buildBukiitAddButton extends StatefulWidget {
-  const buildBukiitAddButton({Key? key}) : super(key: key);
-
-  @override
-  State<buildBukiitAddButton> createState() => _buildBukiitAddButtonState();
-}
-
-class _buildBukiitAddButtonState extends State<buildBukiitAddButton> {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 10),
-          child: Container(
-            child: IconButton(
-              onPressed: () {
-                Stack();
-                print('리스트 추가생성 테스트');
-              },
-              icon: Icon(Icons.add_circle_outline),
-              iconSize: 40,
-              // 눌렀을 때 추가버튼 없어지고, 리스트 텍스트필드 생성 이벤트 처리
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
+// 서브 리스트 작성 부분(추가 버튼 포함)
 class ColumnInColumnTest extends StatefulWidget {
   const ColumnInColumnTest({Key? key}) : super(key: key);
 
@@ -155,7 +82,8 @@ class _ColumnInColumnTestState extends State<ColumnInColumnTest> {
                               decoration: InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: Colors.deepPurpleAccent)),
+                                        // color: Colors.deepPurpleAccent
+                                    )),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                       color: Colors.deepPurpleAccent,
@@ -172,11 +100,11 @@ class _ColumnInColumnTestState extends State<ColumnInColumnTest> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 5),
+                padding: const EdgeInsets.only(top: 7),
                 child: Container(
                   child: IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.add_circle_outline),
+                    icon: Icon(Icons.add_circle_outline, size: 30,),
                     // color: Colors.deepPurpleAccent,
                   ),
                 ),
@@ -238,7 +166,9 @@ Widget _buildProfileRow() {
                   style: TextStyle(fontSize: 20),
                   decoration: InputDecoration(
                     enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.deepPurpleAccent)),
+                        borderSide: BorderSide(
+                            // color: Colors.deepPurpleAccent
+                        )),
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
                           color: Colors.deepPurpleAccent, width: 2.5),
@@ -274,25 +204,28 @@ class _SecretCheckToggleButtonState extends State<SecretCheckToggleButton> {
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 14),
+              padding: const EdgeInsets.only(left: 14, top: 10),
               child: Container(
                 child: Icon(Icons.security_sharp, size: 40,),
               ),
             ),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  Switch(
-                    value: _isSwitched,
-                    onChanged: (value) {
-                      setState(() {
-                        _isSwitched = value;
-                      });
-                    },
-                    activeColor: Colors.deepPurpleAccent,
+            Padding(
+              padding: const EdgeInsets.only(left: 5,top: 10),
+              child: Container(
+                child: Column(
+                  children: <Widget>[
+                    Switch(
+                      value: _isSwitched,
+                      onChanged: (value) {
+                        setState(() {
+                          _isSwitched = value;
+                        });
+                      },
+                      activeColor: Colors.deepPurpleAccent,
 
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
             ),
             Padding(
