@@ -72,7 +72,8 @@ class _ColumnInColumnTestState extends State<ColumnInColumnTest> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 11, right: 13, top: 23),
+                          padding: const EdgeInsets.only(
+                              left: 11, right: 13, top: 23),
                           child: Container(
                             width: 340,
                             height: 25,
@@ -205,6 +206,7 @@ class _SecretCheckToggleButtonState extends State<SecretCheckToggleButton> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      // color: Colors.amberAccent,
       margin: EdgeInsets.zero,
       child: Column(
         children: [
@@ -213,6 +215,7 @@ class _SecretCheckToggleButtonState extends State<SecretCheckToggleButton> {
               Padding(
                 padding: const EdgeInsets.only(left: 16, top: 10, bottom: 10),
                 child: Container(
+                  // color: Colors.red,
                   child: Icon(
                     Icons.security_sharp,
                     size: 40,
@@ -222,6 +225,7 @@ class _SecretCheckToggleButtonState extends State<SecretCheckToggleButton> {
               Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: Container(
+                  // color: Colors.blue,
                   child: Column(
                     children: <Widget>[
                       Switch(
@@ -237,24 +241,29 @@ class _SecretCheckToggleButtonState extends State<SecretCheckToggleButton> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 155),
-                child: Container(
-                  alignment: Alignment.bottomRight,
-                  child: ElevatedButton.icon(
-                    // SAVE 버튼 눌렀을 떄 이벤트(DB에 저장)
-                    onPressed: () {},
-                    icon: Icon(Icons.add_task, size: 30),
-                    label: Text(
-                      'SAVE',
-                      style: TextStyle(fontSize: 22),
+              // Padding(
+              //   padding: const EdgeInsets.only(left: 155),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Container(
+                    // color: Colors.tealAccent,
+                    alignment: Alignment.bottomRight,
+                    child: ElevatedButton.icon(
+                      // SAVE 버튼 눌렀을 떄 이벤트(DB에 저장)
+                      onPressed: () {},
+                      icon: Icon(Icons.add_task, size: 30),
+                      label: Text(
+                        'SAVE',
+                        style: TextStyle(fontSize: 22),
+                      ),
+                      style: TextButton.styleFrom(
+                          minimumSize: Size(100, 45),
+                          backgroundColor: Colors.deepPurpleAccent),
                     ),
-                    style: TextButton.styleFrom(
-                        minimumSize: Size(100, 45),
-                        backgroundColor: Colors.deepPurpleAccent),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ],
