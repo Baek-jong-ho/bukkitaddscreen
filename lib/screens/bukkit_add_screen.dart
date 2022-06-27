@@ -5,7 +5,7 @@ class bukkitAddScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.red[100],
       appBar: AppBar(
         backgroundColor: Colors.deepPurpleAccent,
         title: const Text('나의 버킷리스트 작성'),
@@ -21,13 +21,12 @@ class bukkitAddScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          const SizedBox(height: 1),
           _buildProfileRow(),
           // const SizedBox(height: 1),
           // _buildBukkitTextField(),
           // const SizedBox(height: 1),
           // buildBukiitAddButton(),
-          const SizedBox(height: 10),
+          const SizedBox(height: 1),
           ColumnInColumnTest(),
           const SizedBox(height: 1),
           SecretCheckToggleButton(),
@@ -117,71 +116,73 @@ class _ColumnInColumnTestState extends State<ColumnInColumnTest> {
   }
 }
 
-// 버킷 사진 입력버튼 위젯
+// 버킷 프로필, 제목입력 위젯
 Widget _buildProfileRow() {
-  return Row(
-    children: [
-      Padding(
-        padding: const EdgeInsets.only(left: 6, top: 8),
-        child: Container(
-          width: 100,
-          height: 100,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SizedBox(
-              width: 100,
-              height: 100,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(32.5),
-                child: Image.network(
-                  'https://placeimg.com/200/100/people',
-                  fit: BoxFit.cover,
+  return Card(
+    child: Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 6, top: 8, bottom: 8),
+          child: Container(
+            width: 100,
+            height: 100,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                width: 100,
+                height: 100,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(32.5),
+                  child: Image.network(
+                    'https://placeimg.com/200/100/people',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
           ),
         ),
-      ),
-      Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 8),
-            child: Container(
-              width: 200,
-              height: 20,
-              child: Text(
-                '버킷리스트 제목 입력',
-                style: TextStyle(fontSize: 13),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Container(
-              width: 200,
-              height: 30,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 3),
-                child: TextField(
-                  style: TextStyle(fontSize: 20),
-                  decoration: InputDecoration(
-                    enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                            // color: Colors.deepPurpleAccent
-                        )),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Colors.deepPurpleAccent, width: 2.5),
-                    ),
-                  ),
-                  cursorColor: Colors.deepPurpleAccent,
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 8),
+              child: Container(
+                width: 200,
+                height: 20,
+                child: Text(
+                  '버킷리스트 제목 입력',
+                  style: TextStyle(fontSize: 13),
                 ),
               ),
             ),
-          ),
-        ],
-      ),
-    ],
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Container(
+                width: 200,
+                height: 30,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 3),
+                  child: TextField(
+                    style: TextStyle(fontSize: 20),
+                    decoration: InputDecoration(
+                      enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            // color: Colors.deepPurpleAccent
+                          )),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors.deepPurpleAccent, width: 2.5),
+                      ),
+                    ),
+                    cursorColor: Colors.deepPurpleAccent,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    ),
   );
 }
 
@@ -195,7 +196,7 @@ class SecretCheckToggleButton extends StatefulWidget {
 }
 
 class _SecretCheckToggleButtonState extends State<SecretCheckToggleButton> {
-  var _isSwitched = false;
+  bool _isSwitched = false;
 
   @override
   Widget build(BuildContext context) {
@@ -204,7 +205,7 @@ class _SecretCheckToggleButtonState extends State<SecretCheckToggleButton> {
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 14, top: 10),
+              padding: const EdgeInsets.only(left: 16, top: 10),
               child: Container(
                 child: Icon(Icons.security_sharp, size: 40,),
               ),
@@ -229,7 +230,7 @@ class _SecretCheckToggleButtonState extends State<SecretCheckToggleButton> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 160, top: 10),
+              padding: const EdgeInsets.only(left: 155, top: 10),
               child: Container(
                 alignment: Alignment.bottomRight,
                 child: ElevatedButton.icon(
@@ -253,6 +254,7 @@ class _SecretCheckToggleButtonState extends State<SecretCheckToggleButton> {
   }
 }
 
+// 프로필 사진 편집 버튼
 Widget _buildProfileButton() {
   return InkWell(
     onTap: () {},
