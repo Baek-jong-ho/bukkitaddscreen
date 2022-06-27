@@ -5,7 +5,7 @@ class bukkitAddScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red[100],
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor: Colors.deepPurpleAccent,
         title: const Text('나의 버킷리스트 작성'),
@@ -26,9 +26,9 @@ class bukkitAddScreen extends StatelessWidget {
           // _buildBukkitTextField(),
           // const SizedBox(height: 1),
           // buildBukiitAddButton(),
-          const SizedBox(height: 1),
+          const SizedBox(height: 8),
           ColumnInColumnTest(),
-          const SizedBox(height: 1),
+          const SizedBox(height: 8),
           SecretCheckToggleButton(),
         ],
       ),
@@ -47,42 +47,42 @@ class ColumnInColumnTest extends StatefulWidget {
 class _ColumnInColumnTestState extends State<ColumnInColumnTest> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          // color: Colors.deepPurpleAccent,
-          width: 400,
-          height: 410,
-          child: ListView(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(),
-                child: Container(
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 14, top: 5),
-                        child: Container(
-                          child: Icon(
-                            Icons.circle_rounded,
-                            size: 11,
+    return Card(
+      margin: EdgeInsets.zero,
+      child: Column(
+        children: [
+          Container(
+            // color: Colors.deepPurpleAccent,
+            width: 400,
+            height: 410,
+            child: ListView(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(),
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 14, top: 12),
+                          child: Container(
+                            child: Icon(
+                              Icons.circle_rounded,
+                              size: 11,
+                            ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(left: 11, right: 13, top: 12),
-                        child: Container(
+                        Padding(
+                          padding: const EdgeInsets.only(left: 11, right: 13, top: 23),
                           child: Container(
                             width: 340,
-                            height: 30,
+                            height: 25,
                             child: TextField(
                               style: TextStyle(fontSize: 23),
                               decoration: InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                         // color: Colors.deepPurpleAccent
-                                    )),
+                                        )),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                       color: Colors.deepPurpleAccent,
@@ -93,25 +93,28 @@ class _ColumnInColumnTestState extends State<ColumnInColumnTest> {
                             ),
                           ),
                         ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 7),
+                  child: Container(
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.add_circle_outline,
+                        size: 30,
                       ),
-                    ],
+                      // color: Colors.deepPurpleAccent,
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 7),
-                child: Container(
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.add_circle_outline, size: 30,),
-                    // color: Colors.deepPurpleAccent,
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -119,6 +122,7 @@ class _ColumnInColumnTestState extends State<ColumnInColumnTest> {
 // 버킷 프로필, 제목입력 위젯
 Widget _buildProfileRow() {
   return Card(
+    margin: EdgeInsets.zero,
     child: Row(
       children: [
         Padding(
@@ -167,8 +171,8 @@ Widget _buildProfileRow() {
                     decoration: InputDecoration(
                       enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                            // color: Colors.deepPurpleAccent
-                          )),
+                              // color: Colors.deepPurpleAccent
+                              )),
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                             color: Colors.deepPurpleAccent, width: 2.5),
@@ -186,7 +190,7 @@ Widget _buildProfileRow() {
   );
 }
 
-// 공개 여부 토글 위젯(하단 왼쪽 가장자리)
+// 공개 여부 토글, SAVE 위젯(하단)
 class SecretCheckToggleButton extends StatefulWidget {
   const SecretCheckToggleButton({Key? key}) : super(key: key);
 
@@ -200,56 +204,61 @@ class _SecretCheckToggleButtonState extends State<SecretCheckToggleButton> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 16, top: 10),
-              child: Container(
-                child: Icon(Icons.security_sharp, size: 40,),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 5,top: 10),
-              child: Container(
-                child: Column(
-                  children: <Widget>[
-                    Switch(
-                      value: _isSwitched,
-                      onChanged: (value) {
-                        setState(() {
-                          _isSwitched = value;
-                        });
-                      },
-                      activeColor: Colors.deepPurpleAccent,
-
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 155, top: 10),
-              child: Container(
-                alignment: Alignment.bottomRight,
-                child: ElevatedButton.icon(
-                  // SAVE 버튼 눌렀을 떄 이벤트(DB에 저장)
-                  onPressed: () {},
-                  icon: Icon(Icons.add_task, size: 30),
-                  label: Text(
-                    'SAVE',
-                    style: TextStyle(fontSize: 22),
+    return Card(
+      margin: EdgeInsets.zero,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 16, top: 10, bottom: 10),
+                child: Container(
+                  child: Icon(
+                    Icons.security_sharp,
+                    size: 40,
                   ),
-                  style: TextButton.styleFrom(
-                      minimumSize: Size(100, 45),
-                      backgroundColor: Colors.deepPurpleAccent),
                 ),
               ),
-            )
-          ],
-        ),
-      ],
+              Padding(
+                padding: const EdgeInsets.only(left: 5),
+                child: Container(
+                  child: Column(
+                    children: <Widget>[
+                      Switch(
+                        value: _isSwitched,
+                        onChanged: (value) {
+                          setState(() {
+                            _isSwitched = value;
+                          });
+                        },
+                        activeColor: Colors.deepPurpleAccent,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 155),
+                child: Container(
+                  alignment: Alignment.bottomRight,
+                  child: ElevatedButton.icon(
+                    // SAVE 버튼 눌렀을 떄 이벤트(DB에 저장)
+                    onPressed: () {},
+                    icon: Icon(Icons.add_task, size: 30),
+                    label: Text(
+                      'SAVE',
+                      style: TextStyle(fontSize: 22),
+                    ),
+                    style: TextButton.styleFrom(
+                        minimumSize: Size(100, 45),
+                        backgroundColor: Colors.deepPurpleAccent),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
